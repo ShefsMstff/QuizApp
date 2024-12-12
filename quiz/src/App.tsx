@@ -1,11 +1,13 @@
 
 import React from "react";
 import Quiz from "./components/Quiz";
+import { quizData } from "./components/Quiz/data";
 
-const App: React.FC= () => {
+
+const App: React.FC = () => {
   return (
     <div>
-     <Quiz/>
+      <Quiz data={quizData} />
     </div>
   );
 };

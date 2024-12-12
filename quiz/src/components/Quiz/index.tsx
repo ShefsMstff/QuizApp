@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
-import { quizData } from './data';
 
-const Quiz: React.FC = () => {
+import React, { useState } from "react";
+import { Question } from "./data";
+
+
+interface QuizProps<T> {
+  data: T[];
+}
+
+const Quiz: React.FC<QuizProps<Question>> = ({ data }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
 
   const handleAnswer = (answer: string) => {
-    if (answer === quizData[currentQuestion].correctAnswer) {
-      setScore(score + 1);
+    if (answer === data[currentQuestion].correctAnswer) {
+      setScore((prev) => prev + 1);
     }
 
-    if (currentQuestion < quizData.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
+    if (currentQuestion < data.length - 1) {
+      setCurrentQuestion((prev) => prev + 1);
     } else {
       setFinished(true);
     }
@@ -20,19 +26,18 @@ const Quiz: React.FC = () => {
 
   if (finished) {
     return (
-      <div>
+      <div className="box">
         <h1>Quiz End!</h1>
-        <p>Netice: {score} of {quizData.length}</p>
+        <p>Result: {score} of {data.length}</p>
       </div>
     );
   }
-
-  return (
-    <div>
+ return (
+    <div  className="box">
       <h1>Quiz</h1>
-      <p>{quizData[currentQuestion].question}</p>
+      <p>{data[currentQuestion].question}</p>
       <div>
-        {quizData[currentQuestion].answers.map((answer, index) => (
+        {data[currentQuestion].answers.map((answer, index) => (
           <button key={index} onClick={() => handleAnswer(answer)}>
             {answer}
           </button>

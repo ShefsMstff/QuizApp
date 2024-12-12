@@ -12,6 +12,12 @@ font-size: 30px;
   height: 100vh;
  
 }
+.box{
+  padding:  50px;
+  background-color: rgb(242, 231, 250);
+  border-radius: 10px;
+  line-height: 80px;
+}
 
 button {
   margin: 20px;
