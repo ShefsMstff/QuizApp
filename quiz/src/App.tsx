@@ -1,7 +1,7 @@
 
 import React from "react";
 import Quiz from "./components/Quiz";
-import { quizData } from "./components/Quiz/data";
+import { quizData } from "./data/data";
 
 
 const App: React.FC = () => {

@@ -1,11 +1,6 @@
 
 import React, { useState } from "react";
-import { Question } from "./data";
-
-
-interface QuizProps<T> {
-  data: T[];
-}
+import { Question, QuizProps } from "../../type/type";
 
 const Quiz: React.FC<QuizProps<Question>> = ({ data }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -32,8 +27,9 @@ const Quiz: React.FC<QuizProps<Question>> = ({ data }) => {
       </div>
     );
   }
- return (
-    <div  className="box">
+
+  return (
+    <div className="box">
       <h1>Quiz</h1>
       <p>{data[currentQuestion].question}</p>
       <div>
